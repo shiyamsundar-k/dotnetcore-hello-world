@@ -1,4 +1,4 @@
-# Simple .NET Core v2.0.0 Hello World Application
+# A Simple .NET Core v2.0.0 Hello World in C#
 
 A very simple hello world application, just to get a feel of the basics of the C# language and how the framework runs.
 
