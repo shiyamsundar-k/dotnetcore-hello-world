@@ -4,7 +4,7 @@ A very simple hello world application, just to get a feel of the basics of the C
 
 ## Installation
 
-First download and install <a href="https://www.microsoft.com/net/download/core">the .NET Core installation package</a> for Windows, Linux of macOS. After that install the dependencies and run the compilation script:
+First download and install <a href="https://www.microsoft.com/net/download/core">the .NET Core SDK</a> for Windows, Linux of macOS. After that install the dependencies and run the compilation script:
 
 ```
 $ dotnet restore
