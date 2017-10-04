@@ -22,7 +22,6 @@ namespace yello
     {
         static void Main(string[] args)
         {
-
             var animal = new Animal();
             animal.setType("Pedobear");
             animal.setName("Jorma");
