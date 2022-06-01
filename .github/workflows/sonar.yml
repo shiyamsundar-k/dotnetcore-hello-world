@@ -1,8 +1,8 @@
 name: Build
 on:
   workflow_call:
-  pull_request:
-    types: [opened, synchronize, reopened]
+#   pull_request:
+#     types: [opened, synchronize, reopened]
 jobs:
   build:
     name: Build
@@ -41,5 +41,5 @@ jobs:
         shell: powershell
         run: |
           .\.sonar\scanner\dotnet-sonarscanner begin /k:"2115-27_dotnetcore-hello-world" /o:"2115-27" /d:sonar.login="${{ secrets.SONAR_TOKEN }}" /d:sonar.host.url="https://sonarcloud.io"
-          dotnet build
+          dotnet build ./github.workspace/yello.csproj
           .\.sonar\scanner\dotnet-sonarscanner end /d:sonar.login="${{ secrets.SONAR_TOKEN }}"
