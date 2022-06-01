@@ -5,9 +5,7 @@ on:
   
 jobs:
   build:
-
     runs-on: windows-latest
-
     steps:
     - uses: actions/checkout@v3
     - name: Setup .NET
@@ -18,3 +16,10 @@ jobs:
       run: dotnet restore
     - name: Build
       run: dotnet build --no-restore
+      
+  sonar:
+      name: Sonar Analysis
+      uses: ./.github/workflows/Sonar.yml
+      
+      
+  
