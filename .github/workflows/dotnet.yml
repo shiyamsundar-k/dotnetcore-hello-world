@@ -24,6 +24,7 @@ jobs:
       
   upload:
     runs-on: windows-latest
+    needs: [build,sonar]
     steps:
     - uses: actions/checkout@v3
     - name: Authenticate to GitHub Actions
