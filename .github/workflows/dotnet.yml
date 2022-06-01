@@ -34,5 +34,5 @@ jobs:
       run: dotnet nuget add source --username 2115-27 --password ${{ secrets.GITHUB_TOKEN }} --store-password-in-clear-text --name github "https://nuget.pkg.github.com/2115-27/index.json"
     - name: Pack Package
       run: dotnet pack --configuration Release
-    - name: Publish Package
-      run: dotnet nuget push "bin/Release/yello.1.0.0.nupkg" --api-key ${{ secrets.GITHUB_TOKEN }} --source "github"
+#     - name: Publish Package
+#       run: dotnet nuget push "bin/Release/yello.1.0.0.nupkg" --api-key ${{ secrets.GITHUB_TOKEN }} --source "github"
