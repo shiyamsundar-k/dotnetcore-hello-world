@@ -35,4 +35,4 @@ jobs:
     - name: Pack Package
       run: dotnet pack --configuration Release
     - name: Publish Package
-      run: dotnet nuget push "bin/Release/yello.1.0.0.nupkg"  --api-key bf44c2178c1a463a647ca72a9785fc0e0f8ba24b --source "github"
+      run: dotnet nuget push "bin/Release/*.nupkg"  --api-key ${{ secrets.GITHUB_TOKEN }} --source "github"
