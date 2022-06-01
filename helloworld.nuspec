@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<package >
+    <metadata>
+    <id>helloworld.athulya</id>
+    <version>1.0.0</version>
+    <title>helloworld</title>
+    <authors>athulya</authors>
+    <owners>athulya</owners>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>prints helloworld</description>
+    <releaseNotes>First release</releaseNotes>
+    <copyright>Copyright 2018 (c) Contoso Corporation. All rights reserved.</copyright>
+    <tags>logger logging logs</tags>
+    </metadata>
+    <files>
+    <file src="bin\Release\yello.dll" target="lib\net46\yello.dll" />
+    <file src="bin\Release\yello.xml" target="lib\net46\yello.xml" />
+    </files>
+</package>
