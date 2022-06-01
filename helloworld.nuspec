@@ -6,6 +6,7 @@
     <title>helloworld</title>
     <authors>athulya</authors>
     <owners>athulya</owners>
+    <repository type="git" url="https://github.com/2115-27/dotnetcore-hello-world"  />
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>prints helloworld</description>
     <releaseNotes>First release</releaseNotes>
@@ -16,4 +17,5 @@
     <file src="bin\Release\yello.dll" target="lib\net46\yello.dll" />
     <file src="bin\Release\yello.xml" target="lib\net46\yello.xml" />
     </files>
+    
 </package>
