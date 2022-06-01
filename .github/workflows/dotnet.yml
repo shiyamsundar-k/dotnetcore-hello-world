@@ -26,6 +26,7 @@ jobs:
      uses: ./.github/workflows/sonar.yml
      
   upload:
+    needs: sonarcloud
     runs-on: windows-latest
     steps:
     - uses: actions/checkout@v3
