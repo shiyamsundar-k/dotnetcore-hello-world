@@ -58,6 +58,7 @@ jobs:
         AZURE_WEBAPP_PACKAGE_PATH: '.'     
         DOTNET_VERSION: '3.1.x'    
     steps:
+      - uses: actions/checkout@v3
       - name: Download artifact from build job
         run: dotnet add package Helloworld --version 22.2.71
 
