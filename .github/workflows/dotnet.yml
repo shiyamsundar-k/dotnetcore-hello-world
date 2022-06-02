@@ -32,6 +32,7 @@ jobs:
   sonarcloud:
      name: Sonar
      uses: ./.github/workflows/sonar.yml
+     needs: [Pre-Release]
      
   upload:
     needs: [build,sonarcloud,Pre-Release]
