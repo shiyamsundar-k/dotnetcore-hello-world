@@ -59,9 +59,7 @@ jobs:
         DOTNET_VERSION: '3.1.x'    
     steps:
       - name: Download artifact from build job
-        uses: actions/download-artifact@v3
-        with:
-          name: Helloworld
+        run: dotnet add package Helloworld --version ${{needs.Pre-Release.outputs.currentversion}}
 
       - name: Deploy to Azure Web App
         id: deploy-to-webapp
