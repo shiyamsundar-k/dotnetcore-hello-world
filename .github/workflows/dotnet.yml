@@ -45,4 +45,5 @@ jobs:
       run: dotnet pack --configuration Release
     - name: Publish Package
       run: |
-        dotnet nuget push "bin/Release/Helloworld.${{needs.Pre-Release.outputs.currentversion}}.nupkg" --source "github"
+        version=${{needs.Pre-Release.outputs.currentversion}}
+        dotnet nuget push "bin/Release/Helloworld.$version.nupkg" --source "github"
