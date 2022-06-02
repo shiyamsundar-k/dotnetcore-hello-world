@@ -4,10 +4,15 @@ on:
   workflow_dispatch:
   
 jobs:
+
+  Pre-Release:
+    name: Pre-Release
+    uses: 2115-27/java-maven-sample-war/.github/workflows/pre-release.yml@versntest
+    
   build:
 
     runs-on: windows-latest
-
+    needs: [Pre-Release]
     steps:
     - uses: actions/checkout@v2
     - name: Setup .NET
@@ -26,7 +31,7 @@ jobs:
      uses: ./.github/workflows/sonar.yml
      
   upload:
-    needs: [build,sonarcloud]
+    needs: [build,sonarcloud,Pre-Release]
     runs-on: windows-latest
     steps:
     - uses: actions/checkout@v3
@@ -35,4 +40,5 @@ jobs:
     - name: Pack Package
       run: dotnet pack --configuration Release
     - name: Publish Package
-      run: dotnet nuget push "bin/Release/Helloworld.nupkg" --source "github"
+      run: |
+        dotnet nuget push "bin/Release/Helloworld.${{needs.Pre-Release.outputs.currentversion}}.nupkg" --source "github"
