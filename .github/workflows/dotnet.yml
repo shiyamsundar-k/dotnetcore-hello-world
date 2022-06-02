@@ -6,12 +6,13 @@ on:
 jobs:
   Pre-Release:
     name: Pre-Release
-    uses: 2115-27/java-maven-sample-war/.github/workflows/pre-release.yml@versntest
+    uses: ./.github/workflows/pre-release.yml
     secrets:
       AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
       AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
       
   build:
+    needs: Pre-Release
     runs-on: windows-latest
     steps:
     - uses: actions/checkout@v3
