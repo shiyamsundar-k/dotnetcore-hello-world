@@ -45,7 +45,7 @@ jobs:
     - name: Authenticate to GitHub Actions
       run: dotnet nuget add source --username 2115-27 --password ${{ secrets.GITHUB_TOKEN }} --store-password-in-clear-text --name github "https://nuget.pkg.github.com/2115-27/index.json"
     - name: Pack Package
-      run: dotnet pack --configuration Release --version ${{needs.Pre-Release.outputs.currentversion}}
+      run: dotnet pack --configuration Release -p:PackageVersion=${{needs.Pre-Release.outputs.currentversion}}
     - name: Publish Package
       run: |
         $version=${{needs.Pre-Release.outputs.currentversion}}
