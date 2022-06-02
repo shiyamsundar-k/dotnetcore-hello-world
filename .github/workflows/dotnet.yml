@@ -24,7 +24,7 @@ jobs:
         dotnet-version: 5.0.x
     - name: Restore dependencies
       run: |
-        $version=${{needs.Pre-Release.outputs.currentversion}}
+        $version="${{needs.Pre-Release.outputs.currentversion}}"
         $version
         dotnet restore
     - name: Build
