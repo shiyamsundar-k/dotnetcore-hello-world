@@ -25,7 +25,10 @@ jobs:
     - name: Restore dependencies
       run: dotnet restore
     - name: Build
-      run: dotnet build --no-restore
+      run: |
+        $version=${{needs.Pre-Release.outputs.currentversion}}
+        $version
+        dotnet build --no-restore
 #     - name: Test
 #       run: dotnet test --no-build --verbosity normal
 
@@ -45,5 +48,6 @@ jobs:
       run: dotnet pack --configuration Release
     - name: Publish Package
       run: |
-       
+        $version=${{needs.Pre-Release.outputs.currentversion}}
+        $version
         dotnet nuget push "bin/Release/Helloworld.${{needs.Pre-Release.outputs.currentversion}}.nupkg" --source "github"
