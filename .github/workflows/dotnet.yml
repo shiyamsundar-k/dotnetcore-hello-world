@@ -45,8 +45,8 @@ jobs:
     - name: Pack Package
       run: |
        echo ${{needs.Pre-Release.outputs.currentversion}}
-       dotnet pack --configuration Release -p:PackageVersion=$GITHUB_RUN_ID
+       dotnet pack --configuration Release -p:PackageVersion=$GITHUB_RUN_NUMBER
     
     - name: Publish Package
       run: |
-        dotnet nuget push "bin/Release/Helloworld.$GITHUB_RUN_ID.nupkg" --source "github"
+        dotnet nuget push "bin/Release/Helloworld.$GITHUB_RUN_NUMBER.nupkg" --source "github"
