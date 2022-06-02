@@ -25,18 +25,19 @@ jobs:
     - name: Build
       run: dotnet build --no-restore
       
-  sonar:
-      name: Sonar Analysis
-      needs: build
-      uses: ./.github/workflows/Sonar.yml
+#   sonar:
+#       name: Sonar Analysis
+#       needs: build
+#       uses: ./.github/workflows/Sonar.yml
       
   upload:
     runs-on: windows-latest
-    needs: [build,sonar,Pre-Release]
+    needs: [build,Pre-Release]
     steps:
     - uses: actions/checkout@v3
     - name: Authenticate to GitHub Actions
       run: dotnet nuget add source --username Malavika1113 --password ${{ secrets.GITHUB_TOKEN }} --store-password-in-clear-text --name github "https://nuget.pkg.github.com/Malavika1113/index.json"
+    - run: echo ${{needs.Pre-Release.outputs.currentversion}}
     - name: Pack Package
       run: dotnet pack --configuration Release -p:PackageVersion=${{needs.Pre-Release.outputs.currentversion}}
     - name: Publish Package
