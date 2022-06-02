@@ -32,13 +32,13 @@ jobs:
 #     - name: Test
 #       run: dotnet test --no-build --verbosity normal
 
-  sonarcloud:
-     name: Sonar
-     uses: ./.github/workflows/sonar.yml
-     needs: [Pre-Release]
+#   sonarcloud:
+#      name: Sonar
+#      uses: ./.github/workflows/sonar.yml
+#      needs: [Pre-Release]
      
   upload:
-    needs: [build,sonarcloud,Pre-Release]
+    needs: [build,Pre-Release]
     runs-on: windows-latest
     steps:
     - uses: actions/checkout@v3
