@@ -14,7 +14,7 @@ jobs:
     
   build:
 
-    runs-on: windows-latest
+    runs-on: ubuntu-latest
     needs: [Pre-Release]
     steps:
     - uses: actions/checkout@v2
@@ -39,7 +39,7 @@ jobs:
      
   upload:
     needs: [build,Pre-Release]
-    runs-on: windows-latest
+    runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v3
     - name: Authenticate to GitHub Actions
