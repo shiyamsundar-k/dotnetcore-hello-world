@@ -2,7 +2,13 @@ name: .NET
 
 on:
   workflow_dispatch:
-  
+    inputs:
+      version:
+        description: 'Version'
+        default: '22.2.66'
+        required: true
+        type: string
+    
 jobs:
 
   Pre-Release:
