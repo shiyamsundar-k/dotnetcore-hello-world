@@ -14,4 +14,4 @@ jobs:
       run: |
         echo "Version is: ${{ github.event.inputs.version }}" 
         wget https://nuget.pkg.github.com/2115-27/dotnetcore-hello-world/Helloworld/${{ github.event.inputs.version }}/package.nupkg
-       
+        
