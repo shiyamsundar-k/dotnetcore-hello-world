@@ -53,4 +53,8 @@ jobs:
     - name: List packages
       run: dotnet list package
       
+  deploy:
+     name: Deploy
+     uses: ./.github/workflows/deploy.yml
+     needs: [upload]
 
