@@ -54,7 +54,7 @@ jobs:
     needs: [upload]
     runs-on: ubuntu-latest
     env:
-        AZURE_WEBAPP_NAME: Helloworld    
+        AZURE_WEBAPP_NAME: NugetDeploy    
         AZURE_WEBAPP_PACKAGE_PATH: '.'     
         DOTNET_VERSION: '3.1.x'    
     steps:
