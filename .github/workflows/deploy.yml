@@ -1,12 +1,7 @@
 name: Deploy
 on:
   workflow_call:
-    inputs:
-      version:
-        description: 'Version'
-        default: '22.2.66'
-        required: true
-        type: string
+
 jobs:
   Deploy:
     runs-on: ubuntu-latest
