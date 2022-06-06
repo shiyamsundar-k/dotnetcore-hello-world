@@ -13,8 +13,9 @@ jobs:
   Deploy:
     runs-on: ubuntu-latest
     steps: 
+    - uses: actions/checkout@v2
     - name: Download artifact from Github
       run: |
         echo "Version is: ${{ github.event.inputs.version }}" 
-        dotnet add Helloworld package Helloworld --version 22.2.88
+        dotnet add PROJECT package Helloworld --version 22.2.88
         
