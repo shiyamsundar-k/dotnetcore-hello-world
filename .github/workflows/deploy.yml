@@ -23,8 +23,7 @@ jobs:
     runs-on: ubuntu-latest
     env:
         AZURE_WEBAPP_NAME: webappdeploy    
-        AZURE_WEBAPP_PACKAGE_PATH: '.'
-        PACKAGE_VERSION: '22.2.88'
+        AZURE_WEBAPP_PACKAGE_PATH: './packages'
         DOTNET_VERSION: '3.1.x'    
     steps:
       - name: Deploy to Azure Web App
@@ -34,5 +33,5 @@ jobs:
           app-name: ${{ env.AZURE_WEBAPP_NAME }}
           publish-profile: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE }}
           package: ${{ env.AZURE_WEBAPP_PACKAGE_PATH }}
-          package-version: ${{ env.PACKAGE_VERSION }}
+          
         
