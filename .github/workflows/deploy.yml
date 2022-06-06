@@ -16,5 +16,5 @@ jobs:
     - name: Download artifact from Github
       run: |
         echo "Version is: ${{ github.event.inputs.version }}" 
-        wget https://github.com/2115-27/dotnetcore-hello-world/Helloworld/${{ github.event.inputs.version }}/package.nupkg
+        dotnet add PROJECT package Helloworld --version 22.2.90
         
