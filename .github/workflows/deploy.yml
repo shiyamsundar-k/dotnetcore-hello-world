@@ -10,14 +10,28 @@ env:
            AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
            AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }} 
 jobs:
-  Deploy:
+#   Deploy:
+#     runs-on: ubuntu-latest
+#     steps: 
+#     - uses: actions/checkout@v2
+#     - name: Download artifact from Github
+#       run: |
+#         echo "Version is: ${{ github.event.inputs.version }}" 
+#         wget https://nuget.pkg.github.com/2115-27/dotnetcore-hello-world/Helloworld/${{ github.event.inputs.version }}/Helloworld.${{ github.event.inputs.version }}.nupkg
+  deploy:
     runs-on: ubuntu-latest
-    steps: 
-    - uses: actions/checkout@v2
-    - name: Download artifact from Github
-      run: |
-        echo "Version is: ${{ github.event.inputs.version }}" 
-        wget https://nuget.pkg.github.com/2115-27/dotnetcore-hello-world/Helloworld/${{ github.event.inputs.version }}/Helloworld.${{ github.event.inputs.version }}.nupkg
+    env:
+        AZURE_WEBAPP_NAME: webappdeploy    
+        AZURE_WEBAPP_PACKAGE_PATH: '.'     
+        DOTNET_VERSION: '3.1.x'    
+    steps:
+      - name: Deploy to Azure Web App
+        id: deploy-to-webapp
+        uses: azure/webapps-deploy@v2
+        with:
+          app-name: ${{ env.AZURE_WEBAPP_NAME }}
+          publish-profile: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE }}
+          package: ${{ env.AZURE_WEBAPP_PACKAGE_PATH }}
 
           
         
