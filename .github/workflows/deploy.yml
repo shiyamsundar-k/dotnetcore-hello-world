@@ -17,7 +17,7 @@ jobs:
     - name: Download artifact from Github
       run: |
         echo "Version is: ${{ github.event.inputs.version }}" 
-        wget https://maven.pkg.github.com/2115-27/dotnetcore-hello-world/Helloworld/${{ github.event.inputs.version }}/Helloworld.${{ github.event.inputs.version }}.nupkg
+        wget https://nuget.pkg.github.com/2115-27/dotnetcore-hello-world/Helloworld/${{ github.event.inputs.version }}/Helloworld.${{ github.event.inputs.version }}.nupkg
 
           
         
