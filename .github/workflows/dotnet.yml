@@ -42,7 +42,7 @@ jobs:
      needs: [Pre-Release]
      
   upload:
-    needs: [build,Pre-Release]
+    needs: [build,Pre-Release,sonarcloud]
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v3
