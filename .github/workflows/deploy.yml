@@ -3,14 +3,7 @@ on:
   workflow_dispatch:
 
 jobs:
-#   Deploy:
-#     runs-on: ubuntu-latest
-#     steps: 
-#     - uses: actions/checkout@v2
-#     - name: Download artifact from Github
-#       run: |
-#         echo "Version is: ${{ github.event.inputs.version }}" 
-#         wget https://nuget.pkg.github.com/2115-27/dotnetcore-hello-world/Helloworld/${{ github.event.inputs.version }}/Helloworld.${{ github.event.inputs.version }}.nupkg
+
   deploy:
     runs-on: ubuntu-latest
     env:
