@@ -30,14 +30,14 @@ jobs:
     - name: Test
       run: dotnet test --no-build --verbosity normal
 
-  sonarcloud:
-     name: Sonar
-     uses: ./.github/workflows/sonar.yml
-     needs: [SetReleaseVersion,build]
+#   sonarcloud:
+#      name: Sonar
+#      uses: ./.github/workflows/sonar.yml
+#      needs: [SetReleaseVersion,build]
      
   code-Analysis:
     name: Code Analysis
-    needs: [sonarcloud]
+    needs: [build]
     runs-on: windows-latest    
     steps:
      - uses: dotnet/code-analysis@main
@@ -46,7 +46,7 @@ jobs:
         build-breaking: false
     
   upload:
-    needs: [build,SetReleaseVersion,sonarcloud]
+    needs: [code-Analysis]
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v3
