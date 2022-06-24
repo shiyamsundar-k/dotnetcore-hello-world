@@ -1,4 +1,4 @@
-name: Build and deploy ASP.Net Core app to an Azure Web App
+name: TestDeploy
 
 env:
   AZURE_WEBAPP_NAME: webappdeploy   # set this to the name of your Azure Web App
