@@ -38,7 +38,7 @@ jobs:
 
   testanalysis:
     needs: [build,Pre-Release]
-    runs-on: ubuntu-latest    
+    runs-on: windows-latest    
     steps:
      - uses: actions/checkout@v2
      - uses: actions/setup-dotnet@v1
@@ -58,7 +58,7 @@ jobs:
 #      needs: [build,Pre-Release,testanalysis]
      
   upload:
-    needs: [build,Pre-Release]
+    needs: [build,Pre-Release,testanalysis]
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v3
