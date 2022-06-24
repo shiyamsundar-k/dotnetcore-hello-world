@@ -33,32 +33,16 @@ jobs:
         dotnet restore
     - name: Build
       run: dotnet build --no-restore
-#     - name: Test
-#       run: dotnet test --no-build --verbosity normal
-
-  testanalysis:
-    needs: [build,Pre-Release]
-    runs-on: windows-latest    
-    steps:
-     - uses: actions/checkout@v2
-     - uses: actions/setup-dotnet@v1
-       with:
-        dotnet-version: '3.1.x'
-     - name: Run NuGet restore
-       run: dotnet restore
-     - uses: dotnet/code-analysis@main
-       id: code-analysis
-       with:
-        build-breaking: false
+    - name: Test
+      run: dotnet test --no-build --verbosity normal
     
-
-#   sonarcloud:
-#      name: Sonar
-#      uses: ./.github/workflows/sonar.yml
-#      needs: [build,Pre-Release,testanalysis]
+  sonarcloud:
+     name: Sonar
+     uses: ./.github/workflows/sonar.yml
+     needs: [build,Pre-Release]
      
   upload:
-    needs: [build,Pre-Release,testanalysis]
+    needs: [build,Pre-Release,sonarcloud]
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v3
