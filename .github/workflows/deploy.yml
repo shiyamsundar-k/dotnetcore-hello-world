@@ -7,6 +7,17 @@ env:
 
 on:
   workflow_dispatch:
+    inputs:
+       Environment:
+          type: choice
+          description: environment
+          options:
+          - dev
+          - test
+          - stg
+          - prod
+          required: true
+    
 
 permissions:
   contents: read
