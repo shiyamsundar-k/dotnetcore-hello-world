@@ -9,6 +9,7 @@
     <Company>GitHub</Company>
     <PackageDescription>This package adds an Octocat!</PackageDescription>
     <RepositoryUrl>https://github.com/2115-27/dotnetcore-hello-world</RepositoryUrl>
+    <EnableNETAnalyzers>true</EnableNETAnalyzers>
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="Newtonsoft.Json" Version="10.0.3" />
