@@ -52,13 +52,13 @@ jobs:
         build-breaking: false
     
 
-  sonarcloud:
-     name: Sonar
-     uses: ./.github/workflows/sonar.yml
-     needs: [build,Pre-Release]
+#   sonarcloud:
+#      name: Sonar
+#      uses: ./.github/workflows/sonar.yml
+#      needs: [build,Pre-Release,testanalysis]
      
   upload:
-    needs: [build,Pre-Release,sonarcloud]
+    needs: [build,Pre-Release]
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v3
