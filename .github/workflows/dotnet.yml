@@ -2,12 +2,6 @@ name: .NET
 
 on:
   workflow_dispatch:
-    inputs:
-      version:
-        description: 'Version'
-        default: '22.2.66'
-        required: true
-        type: string
     
 jobs:
 
@@ -39,33 +33,7 @@ jobs:
   sonarcloud:
      name: Sonar
      uses: ./.github/workflows/sonar.yml
-     needs: [build,Pre-Release]
-     
-  version-sweep:
-    runs-on: ubuntu-latest
-    needs: [build,Pre-Release,sonarcloud]
-    # Checkout the repo into the workspace within the VM
-    steps:
-    - uses: actions/checkout@v2
-
-#     # If triggered manually, print the reason why
-#     - name: 'Print manual run reason'
-#       if: ${{ github.event_name == 'workflow_dispatch' }}
-#       run: |
-#         echo "Reason: ${{ github.event.inputs.reason }}"
-
-    # Run the .NET version sweeper
-    # Issues will be automatically created for any non-ignored projects that are targeting non-LTS versions
-    - name: .NET version sweeper
-      id: dotnet-version-sweeper
-      uses: dotnet/versionsweeper@v1.2
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      with:
-        owner: ${{ github.repository_owner }}
-        name: ${{ github.repository }}
-        branch: ${{ github.ref }}
-        sdkCompliance: true
+     needs: [build,Pre-Release]     
      
   upload:
     needs: [build,Pre-Release,sonarcloud]
@@ -83,11 +51,4 @@ jobs:
       run: |
         dotnet nuget push "bin/Release/*.nupkg" --source "github"
       
-#   deploy:
-#      name: Deploy
-#      uses: ./.github/workflows/deploy.yml
-#      needs: [upload]
-#      secrets:
-#       AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
-#       AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
 
