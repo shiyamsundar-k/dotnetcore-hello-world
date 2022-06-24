@@ -1,29 +1,21 @@
 name: Deploy
+
+env:
+  AZURE_WEBAPP_NAME: webappdeploy   # set this to the name of your Azure Web App
+  AZURE_WEBAPP_PACKAGE_PATH: '.'      # set this to the path to your web app project, defaults to the repository root
+  DOTNET_VERSION: '5'                 # set this to the .NET Core version to use
+
 on:
-  workflow_call:
-#     secrets:
-#       AWS_ACCESS_KEY_ID:
-#         required: true
-#       AWS_SECRET_ACCESS_KEY:
-#         required: true
-# env:
-#            AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
-#            AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }} 
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
 jobs:
-#   Deploy:
-#     runs-on: ubuntu-latest
-#     steps: 
-#     - uses: actions/checkout@v2
-#     - name: Download artifact from Github
-#       run: |
-#         echo "Version is: ${{ github.event.inputs.version }}" 
-#         wget https://nuget.pkg.github.com/2115-27/dotnetcore-hello-world/Helloworld/${{ github.event.inputs.version }}/Helloworld.${{ github.event.inputs.version }}.nupkg
   deploy:
+    permissions:
+      contents: none
     runs-on: ubuntu-latest
-    env:
-        AZURE_WEBAPP_NAME: webappdeploy    
-        AZURE_WEBAPP_PACKAGE_PATH: '.'     
-        DOTNET_VERSION: '3.1.x'    
     steps:
       - name: Deploy to Azure Web App
         id: deploy-to-webapp
@@ -32,7 +24,5 @@ jobs:
           app-name: ${{ env.AZURE_WEBAPP_NAME }}
           publish-profile: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE }}
           package: ${{ env.AZURE_WEBAPP_PACKAGE_PATH }}
-
-
           
         
