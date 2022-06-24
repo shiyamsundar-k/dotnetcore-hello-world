@@ -5,7 +5,7 @@ on:
   
 jobs:
 
-  SetReleaseVersion:
+  Pre-Release:
     name: Set-Release-Version
     uses: 2115-27/java-maven-sample-war/.github/workflows/pre-release.yml@versntest
     secrets:
@@ -60,8 +60,8 @@ jobs:
       run: dotnet nuget add source --username 2115-27 --password ${{ secrets.GITHUB_TOKEN }} --store-password-in-clear-text --name github "https://nuget.pkg.github.com/2115-27/index.json"
     - name: Pack Package
       run: |
-       echo ${{needs.SetReleaseVersion.outputs.currentversion}}
-       dotnet pack --configuration Release -p:PackageVersion=${{needs.SetReleaseVersion.outputs.currentversion}}
+       echo ${{needs.Pre-Release.outputs.currentversion}}
+       dotnet pack --configuration Release -p:PackageVersion=${{needs.Pre-Release.outputs.currentversion}}
     
     - name: Publish Package
       run: |
