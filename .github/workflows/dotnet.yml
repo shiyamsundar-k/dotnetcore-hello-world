@@ -40,6 +40,9 @@ jobs:
     needs: [build]
     runs-on: windows-latest    
     steps:
+     - uses: actions/checkout@v2
+     - name: Run NuGet restore
+       run: dotnet restore
      - uses: dotnet/code-analysis@main
        id: code-analysis
        with:
