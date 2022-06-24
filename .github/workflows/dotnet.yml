@@ -52,7 +52,7 @@ jobs:
 #         build-breaking: false
     
   upload:
-    needs: [code-Analysis]
+    needs: [sonarcloud]
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v3
