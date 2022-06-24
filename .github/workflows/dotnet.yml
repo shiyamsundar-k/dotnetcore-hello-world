@@ -33,10 +33,17 @@ jobs:
   sonarcloud:
      name: Sonar
      uses: ./.github/workflows/sonar.yml
-     needs: [build,Pre-Release]     
+     needs: [build,Pre-Release] 
+   
+  Fortify:
+    needs: [sonarcloud]
+    runs-on: ubuntu-latest
+    steps:    
+      - name: Fortify Analysis
+        run: echo Starting Fortify stage!!
      
   upload:
-    needs: [build,Pre-Release,sonarcloud]
+    needs: [Fortify]
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v3
