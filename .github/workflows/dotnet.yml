@@ -25,6 +25,7 @@ jobs:
     - name: Restore dependencies
       run: |
         dotnet restore
+        echo change!
     - name: Build
       run: dotnet build --no-restore
     - name: Test
