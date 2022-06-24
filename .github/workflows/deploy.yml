@@ -17,10 +17,10 @@ on:
           type: choice
           description: environment
           options:
-          - dev
-          - test
-          - stg
-          - prod
+          - DEV
+          - TEST
+          - STG
+          - PROD
           required: true
     
 
