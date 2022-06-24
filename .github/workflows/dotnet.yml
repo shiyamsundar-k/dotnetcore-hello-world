@@ -31,20 +31,20 @@ jobs:
     - name: Test
       run: dotnet test --no-build --verbosity normal
     
-  sonarcloud:
-     name: Sonar
-     uses: ./.github/workflows/sonar.yml
-     needs: [build,Pre-Release] 
+#   sonarcloud:
+#      name: Sonar
+#      uses: ./.github/workflows/sonar.yml
+#      needs: [build,Pre-Release] 
    
-  Fortify:
-    needs: [sonarcloud]
-    runs-on: ubuntu-latest
-    steps:    
-      - name: Fortify Analysis
-        run: echo Starting Fortify stage!!
+#   Fortify:
+#     needs: [sonarcloud]
+#     runs-on: ubuntu-latest
+#     steps:    
+#       - name: Fortify Analysis
+#         run: echo Starting Fortify stage!!
      
   upload:
-    needs: [Fortify]
+    needs: [build]
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v3
