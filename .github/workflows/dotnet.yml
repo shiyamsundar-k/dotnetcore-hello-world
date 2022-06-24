@@ -35,21 +35,21 @@ jobs:
 #      uses: ./.github/workflows/sonar.yml
 #      needs: [SetReleaseVersion,build]
      
-  code-Analysis:
-    name: Code Analysis
-    needs: [build]
-    runs-on: ubuntu-latest    
-    steps:
-     - uses: actions/checkout@v2
-     - uses: actions/setup-dotnet@v1
-       with:
-        dotnet-version: '3.1.x'
-     - name: Run NuGet restore
-       run: dotnet restore
-     - uses: dotnet/code-analysis@main
-       id: code-analysis
-       with:
-        build-breaking: false
+#   code-Analysis:
+#     name: Code Analysis
+#     needs: [build]
+#     runs-on: ubuntu-latest    
+#     steps:
+#      - uses: actions/checkout@v2
+#      - uses: actions/setup-dotnet@v1
+#        with:
+#         dotnet-version: '3.1.x'
+#      - name: Run NuGet restore
+#        run: dotnet restore
+#      - uses: dotnet/code-analysis@main
+#        id: code-analysis
+#        with:
+#         build-breaking: false
     
   upload:
     needs: [code-Analysis]
