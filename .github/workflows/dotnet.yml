@@ -33,13 +33,13 @@ jobs:
         dotnet restore
     - name: Build
       run: dotnet build --no-restore
-#     - name: Test
-#       run: dotnet test --no-build --verbosity normal
+    - name: Test
+      run: dotnet test --no-build --verbosity normal
 
-#   sonarcloud:
-#      name: Sonar
-#      uses: ./.github/workflows/sonar.yml
-#      needs: [build,Pre-Release]
+  sonarcloud:
+     name: Sonar
+     uses: ./.github/workflows/sonar.yml
+     needs: [build,Pre-Release]
      
   upload:
     needs: [build,Pre-Release]
