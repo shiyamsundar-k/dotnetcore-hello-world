@@ -36,12 +36,6 @@ jobs:
 #      uses: ./.github/workflows/sonar.yml
 #      needs: [build,Pre-Release] 
    
-#   Fortify:
-#     needs: [sonarcloud]
-#     runs-on: ubuntu-latest
-#     steps:    
-#       - name: Fortify Analysis
-#         run: echo Starting Fortify stage!!
      
   upload:
     needs: [build]
