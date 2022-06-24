@@ -30,10 +30,10 @@ jobs:
     - name: Test
       run: dotnet test --no-build --verbosity normal
 
-#   sonarcloud:
-#      name: Sonar
-#      uses: ./.github/workflows/sonar.yml
-#      needs: [SetReleaseVersion,build]
+  sonarcloud:
+     name: Sonar
+     uses: ./.github/workflows/sonar.yml
+     needs: [SetReleaseVersion,build]
      
 #   code-Analysis:
 #     name: Code Analysis
