@@ -7,7 +7,12 @@ env:
 
 on:
   workflow_dispatch:
-    inputs:
+    inputs: 
+       version:
+          description: 'Version'
+          default: '22.2.66'
+          required: true
+          type: string
        Environment:
           type: choice
           description: environment
