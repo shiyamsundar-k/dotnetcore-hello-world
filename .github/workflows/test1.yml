@@ -1,4 +1,4 @@
-name: .NET Build
+name: .NET Build testing
 
 on:
   workflow_dispatch:
@@ -7,4 +7,6 @@ jobs:
   test1:
     runs-on: ubuntu-latest
     name: test1
-    run: echo "hello world"
+    steps:
+      - name: Hai
+        run: echo "hello world"
