@@ -39,4 +39,6 @@ jobs:
              echo Failing due to missing condition..
              exit 1
            fi
+      env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
