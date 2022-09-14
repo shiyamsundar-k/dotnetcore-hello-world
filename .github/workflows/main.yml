@@ -32,7 +32,8 @@ jobs:
     - name: Scheduling Deployment
       run: |
            if [[ ${{ github.event.inputs.Deploy }} == 'true' ]];then
-             echo Enabling cronjob for deployment!!   
+             echo Enabling cronjob for deployment!! 
+             gh workflow enable "cronjob.yml" 
            else
              echo Please check the checkbox to continue with the deployment!!
              echo Failing due to missing condition..
@@ -40,6 +41,7 @@ jobs:
            fi
            
   STG_Deploy: 
-  
+    
+    needs: [build,STG_Deploy_Approval]
     name: Deployment
     uses: ./.github/workflows/deploy.yml
