@@ -41,4 +41,4 @@ jobs:
            fi
      
     - name: Deployment
-      run: echo Hello, world Deployment!
+      uses: ./.github/workflows/deploy.yml
