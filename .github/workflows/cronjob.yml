@@ -1,9 +1,10 @@
 name: First Cron Job
+
 on:
+  workflow_dispatch:
   schedule:
     - cron: "*/5 * * * *"
 jobs:
-  
   cron:
       name: Deployment
       uses: ./.github/workflows/deploy.yml
