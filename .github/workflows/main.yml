@@ -29,6 +29,9 @@ jobs:
    environment: STG
    steps:
    
+    - name: CheckOut SourceCode
+      uses: actions/checkout@v3
+           
     - name: Scheduling Deployment
       run: |
            if [[ ${{ github.event.inputs.Deploy }} == 'true' ]];then
