@@ -2,6 +2,10 @@ name: CD STAGE
 
 on:
   workflow_dispatch:
+   inputs:
+      Deploy_M/W:
+        type: boolean
+        description: Check this to Deploy at non-business Hours
 
 jobs:
   
@@ -24,5 +28,17 @@ jobs:
    needs: build
    environment: STG
    steps:
-     - name: Deployment
-       run: echo Hello, world Deployment!
+   
+    - name: Scheduling Deployment
+      run: |
+           if [[ ${{ github.event.inputs.Deploy_M/W }} == 'true' ]];then
+             echo Enabling cronjob for deployment!!
+             gh workflow enable "cronjob.yml"
+           else
+             echo Please check the checkbox to continue with the deployment!!
+             echo Failing due to missing condition..
+             exit 1
+           fi
+     
+    - name: Deployment
+      run: echo Hello, world Deployment!
