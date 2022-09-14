@@ -23,7 +23,7 @@ jobs:
           echo Add other actions to build,
           echo test, and deploy your project.
           
-  STG_Deploy:
+  STG_Deploy_Approval:
    runs-on: ubuntu-latest
    needs: build
    environment: STG
@@ -38,6 +38,8 @@ jobs:
              echo Failing due to missing condition..
              exit 1
            fi
-     
-    - name: Deployment
-      uses: ./.github/workflows/deploy.yml
+           
+  STG_Deploy: 
+  
+    name: Deployment
+    uses: ./.github/workflows/deploy.yml
