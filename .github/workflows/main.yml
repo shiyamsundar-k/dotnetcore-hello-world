@@ -3,7 +3,7 @@ name: CD STAGE
 on:
   workflow_dispatch:
    inputs:
-      Deploy_M/W:
+      Deploy:
         type: boolean
         description: Check this to Deploy at non-business Hours
 
@@ -31,7 +31,7 @@ jobs:
    
     - name: Scheduling Deployment
       run: |
-           if [[ ${{ github.event.inputs.Deploy_M/W }} == 'true' ]];then
+           if [[ ${{ github.event.inputs.Deploy }} == 'true' ]];then
              echo Enabling cronjob for deployment!!
              gh workflow enable "cronjob.yml"
            else
