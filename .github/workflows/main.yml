@@ -39,9 +39,4 @@ jobs:
              echo Failing due to missing condition..
              exit 1
            fi
-           
-  STG_Deploy: 
-    
-    needs: [build,STG_Deploy_Approval]
-    name: Deployment
-    uses: ./.github/workflows/deploy.yml
+
