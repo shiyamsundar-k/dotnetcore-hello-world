@@ -3,8 +3,16 @@ name: First Cron Job
 on:
   workflow_dispatch:
   schedule:
-    - cron: "*/5 * * * *"
+    - cron: "*/10 * * * *"
 jobs:
   cron:
       name: Deployment
       uses: ./.github/workflows/deploy.yml
+  
+  Workflow_dsiable:    
+   runs-on: ubuntu-latest
+   steps:
+     - name: Disabling workflow
+       run: gh workflow disable "cronjob.yml"
+       env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
