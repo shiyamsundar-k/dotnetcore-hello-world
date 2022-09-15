@@ -1,7 +1,7 @@
 name: First Cron Job
 
 on:
-  workflow_dispatch:
+  workflow_call:
   schedule:
     - cron: '*/10 *  * * *'
 
