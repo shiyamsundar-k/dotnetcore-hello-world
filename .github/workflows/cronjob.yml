@@ -1,11 +1,26 @@
-name: Print some text every 3rd minute
+name: Deploy_stg_cron
+
 on:
   schedule:
-    - cron: '*/3 * * * *'
+    - cron: '*/5 * * * *'
 
+  
 jobs:
-  print_text:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Print some text
-        run: echo Periodically printing passages
+  Cron_Deploy:
+      name: Deployment
+      uses: ./.github/workflows/deploy.yml
+  
+  Workflow_dsiable:    
+  
+   runs-on: ubuntu-latest
+   needs: cron
+   
+   steps:
+   
+     - name: CheckOut SourceCode
+       uses: actions/checkout@v3
+       
+     - name: Disabling workflow
+       run: gh workflow disable "cronjob.yml"
+       env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
