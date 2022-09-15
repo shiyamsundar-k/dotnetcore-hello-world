@@ -1,7 +1,6 @@
-name: First Cron Job
+name: Deploy_stg_cron
 
 on:
-  workflow_dispatch:
   schedule:
     - cron: '*/10 * * * *'
 
