@@ -8,4 +8,4 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Print some text
-      - run: echo Periodically printing passages
+        run: echo Periodically printing passages
