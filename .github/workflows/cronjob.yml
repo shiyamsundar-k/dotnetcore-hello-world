@@ -3,7 +3,10 @@ name: First Cron Job
 on:
   workflow_dispatch:
   schedule:
-    - cron: "*/10 * * * *"
+    - cron: '*/10 *  * * *'
+
+permissions:
+  contents: write
 jobs:
   cron:
       name: Deployment
