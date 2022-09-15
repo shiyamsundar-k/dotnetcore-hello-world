@@ -2,7 +2,7 @@ name: Deploy_stg_cron
 
 on:
   schedule:
-    - cron: '*/5 * * * *'
+    - cron: '00 11 * * *'
 
   
 jobs:
