@@ -5,7 +5,7 @@ on:
  
 jobs:
   
-  build:
+  Build:
     runs-on: ubuntu-latest
 
     steps:
@@ -21,19 +21,25 @@ jobs:
           
   STG_Deploy_Approval_IT_Team:
    runs-on: ubuntu-latest
-   needs: build
+   needs: Build
    environment: STG
    steps:
    
       - name: IT Team's Approval
-        run: echo Approved from IT team
+        run: echo Approved from IT team..Passing for Devops teams's approval
         
   STG_Deploy_Approval_Devops_Team:
    runs-on: ubuntu-latest
-   needs: [build,STG_Deploy_Approval_IT_Team]
+   needs: [Build,STG_Deploy_Approval_IT_Team]
    environment: Devops
    steps:
    
       - name: Devops Team's Approval
-        run: echo Approved from Devops team
+        run: echo Approved from Devops team..Continuing with Deployment..
+        
+  STG_Deploy:
+      needs: [Build,STG_Deploy_Approval_IT_Team,STG_Deploy_Approval_Devops_Team]
+      name: Deployment
+      uses: ./.github/workflows/deploy.yml
+   
 
