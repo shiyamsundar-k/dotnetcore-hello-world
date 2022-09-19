@@ -35,7 +35,7 @@ jobs:
    steps:
    
       - name: Devops Team's Approval
-        run: echo Approved from Devops team..Continuing with Deployment..
+        run: Approved from Devops team..Continuing with Deployment..
         
   STG_Deploy:
       needs: [Build,STG_Deploy_Approval_IT_Team,STG_Deploy_Approval_Devops_Team]
