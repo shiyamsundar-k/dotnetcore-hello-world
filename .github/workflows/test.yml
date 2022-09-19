@@ -1,4 +1,4 @@
-name: STG approval
+name: STG test approval
 
 on:
   workflow_dispatch:
