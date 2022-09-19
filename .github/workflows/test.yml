@@ -26,7 +26,7 @@ jobs:
    steps:
    
       - name: IT Team's Approval
-        run: echo Approved from IT team..Passing for Devops teams's approval
+        run: echo Approved from IT team..Passing for Devops approval..
         
   STG_Deploy_Approval_Devops_Team:
    runs-on: ubuntu-latest
