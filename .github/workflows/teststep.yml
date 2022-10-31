@@ -1,0 +1,16 @@
+name: STEP_OUTPUT
+
+on:
+  workflow_dispatch:
+
+jobs:
+
+  output-test:
+   runs-on: windows-latest  
+   steps:
+    - name: Set the value
+      id: step_one
+      run: echo "$test="Hello world"" >> $env:GITHUB_OUTPUT
+      
+    - name: Use it
+      run: echo "${{ steps.step_one.outputs.test }}"
